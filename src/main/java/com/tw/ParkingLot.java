@@ -12,6 +12,10 @@ public class ParkingLot {
 
     public Ticket park(Car car) throws RuntimeException {
 
-        throw new RuntimeException("No Parking Lot");
+        if (saturation) {
+            throw new RuntimeException("No Parking Lot");
+        }
+
+        return new Ticket(car.getCarNum());
     }
 }

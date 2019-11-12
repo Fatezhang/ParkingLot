@@ -2,9 +2,13 @@ package com.tw;
 
 public class Ticket {
 
-    private int carNo;
+    private int carNumber;
 
-    public Ticket(int carNo) {
-        this.carNo = carNo;
+    public Ticket(int carNumber) {
+        this.carNumber = carNumber;
+    }
+
+    public int getCarNum() {
+        return carNumber;
     }
 }
