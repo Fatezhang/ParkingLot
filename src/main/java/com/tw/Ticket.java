@@ -7,18 +7,18 @@ import lombok.Getter;
 @Getter
 public class Ticket {
 
-    private int carNumber;
+    private String carNumber;
 
     @Override
     public int hashCode() {
-        return carNumber;
+        return carNumber.hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Ticket) {
             Ticket ticket = (Ticket) obj;
-            return ticket.getCarNumber() == this.getCarNumber();
+            return ticket.getCarNumber().equals(this.getCarNumber());
         }
         return false;
     }
