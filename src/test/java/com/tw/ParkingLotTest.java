@@ -49,7 +49,7 @@ public class ParkingLotTest {
         for (int i = 0; i < 10; i++) {
             parkingLot.park(new Car(i));
         }
-        Car car = parkingLot.getCar(new Ticket(11));
+        parkingLot.getCar(new Ticket(11));
         ex.expectMessage("Invalid ticket");
     }
 
