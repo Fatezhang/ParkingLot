@@ -22,7 +22,7 @@ public class ParkingLot {
         if (garage.size() == size) {
             throw new RuntimeException("No Parking Lot");
         }
-        Ticket ticket = new Ticket(car.getCarNum());
+        Ticket ticket = new Ticket(car.getCarNumber());
         garage.put(ticket, car);
         return ticket;
     }
@@ -41,9 +41,5 @@ public class ParkingLot {
             throw new RuntimeException("Invalid ticket");
         }
         return car;
-    }
-
-    public int getLotNum() {
-        return garage.size();
     }
 }

@@ -19,7 +19,7 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car(123456);
         Ticket ticket = parkingLot.park(car);
-        assertEquals(car.getCarNum(), ticket.getCarNum());
+        assertEquals(car.getCarNumber(), ticket.getCarNumber());
     }
 
     @Test(expected = RuntimeException.class)
@@ -40,7 +40,7 @@ public class ParkingLotTest {
             parkingLot.park(new Car(i));
         }
         Car car = parkingLot.getCar(new Ticket(5));
-        assertEquals(5, car.getCarNum());
+        assertEquals(5, car.getCarNumber());
     }
 
     @Test(expected = RuntimeException.class)

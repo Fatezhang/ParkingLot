@@ -1,16 +1,13 @@
 package com.tw;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public class Ticket {
 
     private int carNumber;
-
-    public Ticket(int carNumber) {
-        this.carNumber = carNumber;
-    }
-
-    public int getCarNum() {
-        return carNumber;
-    }
 
     @Override
     public int hashCode() {
@@ -21,7 +18,7 @@ public class Ticket {
     public boolean equals(Object obj) {
         if (obj instanceof Ticket) {
             Ticket ticket = (Ticket) obj;
-            return ticket.getCarNum() == this.getCarNum();
+            return ticket.getCarNumber() == this.getCarNumber();
         }
         return false;
     }
