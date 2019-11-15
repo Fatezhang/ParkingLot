@@ -9,12 +9,16 @@ public class ParkingLot {
 
     private int size;
 
+    private int id;
+
     private Map<Ticket, Car> carList;
 
-    public ParkingLot(int size) {
+    public ParkingLot(int size,int id) {
         this.size = size;
+        this.id = id;
         this.carList = new HashMap<>();
     }
+
 
 
     public Ticket park(Car car) throws RuntimeException {

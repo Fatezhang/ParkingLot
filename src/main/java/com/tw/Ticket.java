@@ -22,4 +22,7 @@ public class Ticket {
         }
         return false;
     }
+
+    public int getParkingLotId() {
+    }
 }
