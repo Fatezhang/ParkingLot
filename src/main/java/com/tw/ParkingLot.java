@@ -2,23 +2,25 @@ package com.tw;
 
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class ParkingLot {
 
     private int size;
 
+    public int getId() {
+        return id;
+    }
+
     private int id;
 
     private Map<Ticket, Car> carList;
 
-    public ParkingLot(int size,int id) {
+    public ParkingLot(int size, int id) {
         this.size = size;
         this.id = id;
         this.carList = new HashMap<>();
     }
-
 
 
     public Ticket park(Car car) throws RuntimeException {
@@ -26,7 +28,7 @@ public class ParkingLot {
         if (carList.size() == size) {
             throw new RuntimeException("No Parking Lot");
         }
-        Ticket ticket = new Ticket(car.getCarNumber());
+        Ticket ticket = new Ticket(car.getCarNumber(), id);
         carList.put(ticket, car);
         return ticket;
     }
@@ -37,5 +39,13 @@ public class ParkingLot {
             throw new RuntimeException("Invalid ticket");
         }
         return car;
+    }
+
+    int getCurrentParkNum() {
+        return carList.size();
+    }
+
+    int getSize() {
+        return size;
     }
 }

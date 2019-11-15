@@ -7,7 +7,14 @@ import lombok.Getter;
 @Getter
 public class Ticket {
 
+    private int lotId;
+
     private String carNumber;
+
+    public Ticket(String carNumber, int lotId) {
+        this.lotId = lotId;
+        this.carNumber = carNumber;
+    }
 
     @Override
     public int hashCode() {
@@ -24,5 +31,6 @@ public class Ticket {
     }
 
     public int getParkingLotId() {
+        return lotId;
     }
 }

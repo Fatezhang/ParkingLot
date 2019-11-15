@@ -16,7 +16,7 @@ public class ParkingLotTest {
 
     @Test
     public void givenNoSaturationParkingWhenParkThenGetTicket() {
-        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingLot parkingLot = new ParkingLot(10,1);
         Car car = new Car("123456");
         Ticket ticket = parkingLot.park(car);
         assertEquals(car.getCarNumber(), ticket.getCarNumber());
@@ -24,7 +24,7 @@ public class ParkingLotTest {
 
     @Test(expected = RuntimeException.class)
     public void givenSaturationParkingWhenParkThenAlertError() {
-        ParkingLot parkingLot = new ParkingLot(2);
+        ParkingLot parkingLot = new ParkingLot(2,1);
         parkingLot.park(new Car("1234"));
         parkingLot.park(new Car("12345"));
         parkingLot.park(new Car("123456"));
@@ -33,22 +33,22 @@ public class ParkingLotTest {
 
     @Test
     public void givenValidTicketWhenGetCarThenSuccessful() {
-        ParkingLot parkingLot = new ParkingLot(3);
+        ParkingLot parkingLot = new ParkingLot(3,1);
         parkingLot.park(new Car("12345"));
-        Car car = parkingLot.getCar(new Ticket("12345"));
+        Car car = parkingLot.getCar(new Ticket("12345",parkingLot.getId()));
         assertEquals("12345", car.getCarNumber());
     }
 
     @Test(expected = RuntimeException.class)
     public void givenInvalidTicketWhenGetCarThenAlertError() {
-        ParkingLot parkingLot = new ParkingLot(10);
-        parkingLot.getCar(new Ticket("11111"));
+        ParkingLot parkingLot = new ParkingLot(10,1);
+        parkingLot.getCar(new Ticket("11111",parkingLot.getId()));
         expectedException.expectMessage("Invalid ticket");
         parkingLot.park(new Car("12345"));
-        parkingLot.getCar(new Ticket("11111"));
+        parkingLot.getCar(new Ticket("11111",parkingLot.getId()));
         expectedException.expectMessage("Invalid ticket");
-        parkingLot.getCar(new Ticket("12345"));
-        parkingLot.getCar(new Ticket("12345"));
+        parkingLot.getCar(new Ticket("12345",parkingLot.getId()));
+        parkingLot.getCar(new Ticket("12345",parkingLot.getId()));
         expectedException.expectMessage("Invalid ticket");
     }
 

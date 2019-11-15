@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNotNull;
 public class ParkingBoyTest {
 
     @Test
-    void givenAParkingBoyOneCarportParkingLotOneCarWhenParkingThenGetATicket(){
+    public void givenAParkingBoyOneCarportParkingLotOneCarWhenParkingThenGetATicket() throws Exception{
         int id = 1;
         ParkingLot parkingLot = new ParkingLot(1, id);
         List<ParkingLot> parkingLots = new ArrayList<>();
@@ -28,7 +28,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    void givenParkingLotWithACarAndATicketWhenPickCarThenGetThisCar(){
+    public void givenParkingLotWithACarAndATicketWhenPickCarThenGetThisCar() throws Exception{
         int id = 1;
         String carNumber = "陕 A88888";
         ParkingLot parkingLot = new ParkingLot(1, id);
@@ -37,7 +37,7 @@ public class ParkingBoyTest {
         parkingLots.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.park(car);
-        Ticket ticket = new Ticket(carNumber);
+        Ticket ticket = new Ticket(carNumber,parkingLot.getId());
         Car newCar = parkingBoy.pick(ticket);
         assertEquals(ticket.getCarNumber(), newCar.getCarNumber());
     }
