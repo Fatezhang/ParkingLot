@@ -27,6 +27,21 @@ public class ParkingBoyTest {
         assertEquals(ticket.getParkingLotId(), id);
     }
 
+    @Test
+    void givenParkingLotWithACarAndATicketWhenPickCarThenGetThisCar(){
+        int id = 1;
+        String carNumber = "陕 A88888";
+        ParkingLot parkingLot = new ParkingLot(1, id);
+        Car car = new Car(carNumber);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.park(car);
+        Ticket ticket = new Ticket(carNumber);
+        Car newCar = parkingBoy.pick(ticket);
+        assertEquals(ticket.getCarNumber(), newCar.getCarNumber());
+    }
+
 
 
 }
