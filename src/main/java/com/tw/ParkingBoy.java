@@ -13,8 +13,11 @@ public class ParkingBoy {
     }
 
     public Ticket park(Car car) {
-        ParkingLot parkingLot = parkingLotList.stream().filter(lot -> lot.getCurrentParkNum() < lot.getSize()).collect(Collectors.<ParkingLot>toList()).get(0);
-        Ticket ticket = Optional.ofNullable(parkingLot).orElseThrow(RuntimeException::new).park(car);
+        List<ParkingLot> parkingLots = parkingLotList.stream().filter(lot -> lot.getCurrentParkNum() < lot.getSize()).collect(Collectors.<ParkingLot>toList());
+        if (parkingLots.isEmpty()) {
+            throw new RuntimeException("No carports to park");
+        }
+        Ticket ticket = Optional.ofNullable(parkingLots.get(0)).orElseThrow(RuntimeException::new).park(car);
         return ticket;
     }
 

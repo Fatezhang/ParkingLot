@@ -121,7 +121,8 @@ public class ParkingBoyTest {
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
-    @Test
+
+    @Test(expected = RuntimeException.class)
     public void given1ParkingBoy1FullParkingLot1CarWhenParkingThenAlertError(){
         int parkingLotAId = 1;
         int parkingLotBId = 2;
