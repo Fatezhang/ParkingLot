@@ -147,5 +147,25 @@ public class ParkingBoyTest {
 
     }
 
+    @Test
+    public void given1ParkingBoy1ParkingLot1CarWhenPickCarThenAlertError(){
+        int parkingLotId = 1;
+        String carNumber = "陕 A129234";
+        ParkingLot parkingLot = new ParkingLot(1, parkingLotId);
+        Car car = new Car(carNumber);
+        List<ParkingLot> lotList = new ArrayList<>();
+        lotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(lotList);
+        Ticket ticket = parkingBoy.park(car);
+
+        parkingBoy.pick(ticket);
+        parkingBoy.pick(ticket);
+
+        expectedException.expectMessage("No car to pick");
+
+
+
+    }
+
 
 }
