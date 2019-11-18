@@ -1,16 +1,15 @@
 package com.tw;
 
 
+import lombok.Getter;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter
 public class ParkingLot {
 
     private int size;
-
-    public int getId() {
-        return id;
-    }
 
     private int id;
 
@@ -43,9 +42,5 @@ public class ParkingLot {
 
     int getCurrentParkNum() {
         return carList.size();
-    }
-
-    int getSize() {
-        return size;
     }
 }
