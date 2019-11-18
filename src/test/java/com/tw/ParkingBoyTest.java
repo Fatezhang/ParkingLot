@@ -147,7 +147,7 @@ public class ParkingBoyTest {
 
     }
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void given1ParkingBoy1ParkingLot1CarWhenPickCarThenAlertError(){
         int parkingLotId = 1;
         String carNumber = "陕 A129234";
@@ -161,7 +161,7 @@ public class ParkingBoyTest {
         parkingBoy.pick(ticket);
         parkingBoy.pick(ticket);
 
-        expectedException.expectMessage("No car to pick");
+        expectedException.expectMessage("Invalid ticket");
 
 
 
