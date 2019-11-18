@@ -66,5 +66,29 @@ public class ParkingBoyTest {
         assertEquals(ticketB.getParkingLotId(), parkingLotBId);
     }
 
+    @Test
+    public void given1ParkingBoy2ParkingLotsWith1CarportAnd2Car(){
+        int parkingLotAId = 1;
+        int parkingLotBId = 2;
+        String carANumber = "陕 A88888";
+        String carBNumber = "陕 A66666";
+        Car carA = new Car(carANumber);
+        Car carB = new Car(carBNumber);
+        ParkingLot parkingLotA = new ParkingLot(1, parkingLotAId);
+        ParkingLot parkingLotB = new ParkingLot(2, parkingLotBId);
+        List<ParkingLot> lotList = new ArrayList<>();
+        lotList.add(parkingLotA);
+        lotList.add(parkingLotB);
+        ParkingBoy parkingBoy = new ParkingBoy(lotList);
+        Ticket ticketA = parkingBoy.park(carA);
+        Ticket ticketB = parkingBoy.park(carB);
+        parkingBoy.pick(ticketA);
+
+        Ticket ticketNewA = parkingBoy.park(carA);
+        assertEquals(ticketNewA.getCarNumber(), carA.getCarNumber());
+        assertEquals(ticketNewA.getParkingLotId(), parkingLotAId);
+
+    }
+
 
 }
