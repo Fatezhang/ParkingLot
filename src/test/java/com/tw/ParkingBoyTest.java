@@ -63,7 +63,7 @@ public class ParkingBoyTest {
         assertEquals(ticketA.getCarNumber(), carANumber);
         assertEquals(ticketB.getCarNumber(), carBNumber);
         assertEquals(ticketA.getParkingLotId(), parkingLotAId);
-        assertEquals(ticketB.getParkingLotId(), parkingLotBId);
+        assertEquals(ticketB.getParkingLotId(), parkingLotAId);
     }
 
 
