@@ -1,6 +1,8 @@
 package com.tw;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +69,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void given1ParkingBoy2ParkingLotsWith1CarportAnd2Car(){
+    public void given1ParkingBoy2ParkingLotsWith1CarportAnd2CarWhenParkAndPickThenGetTicketBindLotA(){
         int parkingLotAId = 1;
         int parkingLotBId = 2;
         String carANumber = "陕 A88888";
@@ -87,6 +89,60 @@ public class ParkingBoyTest {
         Ticket ticketNewA = parkingBoy.park(carA);
         assertEquals(ticketNewA.getCarNumber(), carA.getCarNumber());
         assertEquals(ticketNewA.getParkingLotId(), parkingLotAId);
+
+    }
+
+    @Test
+    public void given1ParkingBoy2ParkingLots3CarsWhenParkAllCarsThenGetTicketABindLotATicketBBindLotATicketCBindLotB(){
+        int parkingLotAId = 1;
+        int parkingLotBId = 2;
+        String carANumber = "陕 A88888";
+        String carBNumber = "陕 A66666";
+        String carCNumber = "陕 A11111";
+        Car carA = new Car(carANumber);
+        Car carB = new Car(carBNumber);
+        Car carC = new Car(carCNumber);
+        ParkingLot parkingLotA = new ParkingLot(2, parkingLotAId);
+        ParkingLot parkingLotB = new ParkingLot(1, parkingLotBId);
+        List<ParkingLot> lotList = new ArrayList<>();
+        lotList.add(parkingLotA);
+        lotList.add(parkingLotB);
+        ParkingBoy parkingBoy = new ParkingBoy(lotList);
+
+        Ticket ticketA = parkingBoy.park(carA);
+        Ticket ticketB = parkingBoy.park(carB);
+        Ticket ticketC = parkingBoy.park(carC);
+        assertEquals(ticketA.getParkingLotId(), parkingLotAId);
+        assertEquals(ticketB.getParkingLotId(), parkingLotAId);
+        assertEquals(ticketC.getParkingLotId(), parkingLotBId);
+    }
+
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void given1ParkingBoy1FullParkingLot1CarWhenParkingThenAlertError(){
+        int parkingLotAId = 1;
+        int parkingLotBId = 2;
+        String carANumber = "陕 A88888";
+        String carBNumber = "陕 A66666";
+        String carCNumber = "陕 A11111";
+        Car carA = new Car(carANumber);
+        Car carB = new Car(carBNumber);
+        Car carC = new Car(carCNumber);
+        ParkingLot parkingLotA = new ParkingLot(1, parkingLotAId);
+        ParkingLot parkingLotB = new ParkingLot(1, parkingLotBId);
+        List<ParkingLot> lotList = new ArrayList<>();
+        lotList.add(parkingLotA);
+        lotList.add(parkingLotB);
+        ParkingBoy parkingBoy = new ParkingBoy(lotList);
+
+        parkingBoy.park(carA);
+        parkingBoy.park(carB);
+        parkingBoy.park(carC);
+
+        expectedException.expectMessage("No carports to park");
 
     }
 
