@@ -16,6 +16,6 @@ public class SmartParkingBoy {
     }
 
     public Car pick(Ticket ticket) {
-        return null;
+        return parkingLots.get(0).getCar(ticket);
     }
 }
