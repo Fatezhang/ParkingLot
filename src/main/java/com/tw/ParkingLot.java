@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-public class ParkingLot {
+public class ParkingLot implements Comparable<ParkingLot> {
 
     private int size;
 
@@ -40,7 +40,14 @@ public class ParkingLot {
         return car;
     }
 
-    int getCurrentParkNum() {
+    public int getCurrentParkNum() {
         return carList.size();
+    }
+
+    @Override
+    public int compareTo(ParkingLot anotherLot) {
+        int thisRemainingParksNum = this.getSize() - carList.size();
+        int anotherLotRemainingParksNum = anotherLot.getSize() - anotherLot.getCarList().size();
+        return Integer.compare(thisRemainingParksNum, anotherLotRemainingParksNum);
     }
 }

@@ -55,6 +55,9 @@ public class SmartParkingBoyTest {
         assertEquals(2, ticket.getParkingLotId());
     }
 
+    /**
+     * 上面通过之后这个已经没有催生出代码了
+     */
     @Test
     public void givenASmartParkingBoyWithThreeCarportParkingLotTwoCarWhenParkingThenGetATicket() {
         ParkingLot parkingLot1 = new ParkingLot(3, 1);
