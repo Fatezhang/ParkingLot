@@ -64,6 +64,18 @@ public abstract class AbstractParkingBoy implements IParkingBoy {
         }
     }
 
+    /**
+     * 只有停车经理去实现这个方法 没有实现的话抛出异常
+     *
+     * @return 返回停车经理手下的所有停车小弟
+     */
+    protected List<IParkingBoy> getMyParkingBoys() {
+        throw new RuntimeException("Illegal operation");
+    }
+
+    /**
+     * 泊车经理的泊车策略 需要获取到所有手下的停车小弟
+     */
     public static class ManagerStrategy implements IStrategyHandler {
 
         private List<ParkingLot> parkingLots;
