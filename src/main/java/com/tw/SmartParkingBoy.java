@@ -18,7 +18,7 @@ public class SmartParkingBoy {
     }
 
     public Car pick(Ticket ticket) {
-        ParkingLot parkingLot = parkingLots.stream().filter(lot -> lot.getId() == ticket.getLotId()).collect(Collectors.<ParkingLot>toList()).get(0);
+        ParkingLot parkingLot = parkingLots.stream().filter(lot -> lot.getId() == ticket.getParkingLotId()).collect(Collectors.<ParkingLot>toList()).get(0);
         return parkingLot.getCar(ticket);
     }
 }
