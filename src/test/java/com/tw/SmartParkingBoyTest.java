@@ -17,7 +17,7 @@ public class SmartParkingBoyTest {
         ParkingLot parkingLot = new ParkingLot(1, 1);
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        IParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
         Ticket ticket = parkingBoy.park(new Car("陕 A88888"));
         assertNotNull(ticket);
         assertEquals("陕 A88888", ticket.getCarNumber());
@@ -30,7 +30,7 @@ public class SmartParkingBoyTest {
         Ticket ticket = parkingLot.park(new Car("陕 A88888"));
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        IParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
         assertEquals("陕 A88888", parkingBoy.pick(ticket).getCarNumber());
     }
 
@@ -48,7 +48,7 @@ public class SmartParkingBoyTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
         parkingLots.add(parkingLot3);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        IParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
         Ticket ticket = parkingBoy.park(new Car("陕 A88888"));
         assertNotNull(ticket);
         assertEquals("陕 A88888", ticket.getCarNumber());
@@ -69,7 +69,7 @@ public class SmartParkingBoyTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
         parkingLots.add(parkingLot3);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        IParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
         Ticket ticket1 = parkingBoy.park(new Car("陕 A88888"));
         Ticket ticket2 = parkingBoy.park(new Car("陕 A99999"));
         assertNotNull(ticket1);
@@ -95,7 +95,7 @@ public class SmartParkingBoyTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
         parkingLots.add(parkingLot3);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        IParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
         parkingBoy.park(new Car("陕 A88888"));
 
         expectedException.expectMessage("No Parking Lot");
@@ -108,7 +108,7 @@ public class SmartParkingBoyTest {
         Ticket ticket = parkingLot.park(new Car("陕 A88888"));
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        IParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
         assertEquals("陕 A88888", parkingBoy.pick(ticket).getCarNumber());
         parkingBoy.pick(ticket).getCarNumber();
         expectedException.expectMessage("Invalid ticket");

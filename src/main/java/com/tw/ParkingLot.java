@@ -44,7 +44,7 @@ public class ParkingLot {
         return carList.size();
     }
 
-    public int getRemainingParkNum(){
+    public int getRemainingParkNum() {
         return this.getSize() - this.getCarList().size();
     }
 }

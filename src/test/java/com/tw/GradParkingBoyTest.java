@@ -21,7 +21,7 @@ public class GradParkingBoyTest {
         ParkingLot parkingLot = new ParkingLot(1, id);
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
-        GradParkingBoy gradParkingBoy = new GradParkingBoy(parkingLots);
+        IParkingBoy gradParkingBoy = new GradParkingBoy(parkingLots);
         Car car = new Car("陕 A88888");
         Ticket ticket = gradParkingBoy.park(car);
         assertNotNull(ticket);
@@ -37,7 +37,7 @@ public class GradParkingBoyTest {
         Car car = new Car(carNumber);
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
-        GradParkingBoy gradParkingBoy = new GradParkingBoy(parkingLots);
+        IParkingBoy gradParkingBoy = new GradParkingBoy(parkingLots);
         gradParkingBoy.park(car);
         Ticket ticket = new Ticket(carNumber, parkingLot.getId());
         Car newCar = gradParkingBoy.pick(ticket);
@@ -57,7 +57,7 @@ public class GradParkingBoyTest {
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLotA);
         lotList.add(parkingLotB);
-        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
+        IParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
 
         Ticket ticketA = gradParkingBoy.park(carA);
         Ticket ticketB = gradParkingBoy.park(carB);
@@ -81,7 +81,7 @@ public class GradParkingBoyTest {
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLotA);
         lotList.add(parkingLotB);
-        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
+        IParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
         Ticket ticketA = gradParkingBoy.park(carA);
         Ticket ticketB = gradParkingBoy.park(carB);
         gradParkingBoy.pick(ticketA);
@@ -107,7 +107,7 @@ public class GradParkingBoyTest {
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLotA);
         lotList.add(parkingLotB);
-        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
+        IParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
 
         Ticket ticketA = gradParkingBoy.park(carA);
         Ticket ticketB = gradParkingBoy.park(carB);
@@ -137,7 +137,7 @@ public class GradParkingBoyTest {
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLotA);
         lotList.add(parkingLotB);
-        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
+        IParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
 
         gradParkingBoy.park(carA);
         gradParkingBoy.park(carB);
@@ -155,7 +155,7 @@ public class GradParkingBoyTest {
         Car car = new Car(carNumber);
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLot);
-        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
+        IParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
         Ticket ticket = gradParkingBoy.park(car);
 
         gradParkingBoy.pick(ticket);
