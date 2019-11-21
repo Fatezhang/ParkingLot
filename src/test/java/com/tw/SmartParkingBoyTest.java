@@ -102,4 +102,16 @@ public class SmartParkingBoyTest {
 
     }
 
+    @Test(expected = RuntimeException.class)
+    public void given1ParkingLot1ticketWhenPickCarTwiceThenAlertError() {
+        ParkingLot parkingLot = new ParkingLot(1, 1);
+        Ticket ticket = parkingLot.park(new Car("陕 A88888"));
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot);
+        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        assertEquals("陕 A88888", parkingBoy.pick(ticket).getCarNumber());
+        parkingBoy.pick(ticket).getCarNumber();
+        expectedException.expectMessage("Invalid ticket");
+    }
+
 }
