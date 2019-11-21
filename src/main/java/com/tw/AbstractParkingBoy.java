@@ -3,6 +3,8 @@ package com.tw;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparing;
+
 public abstract class AbstractParkingBoy implements IParkingBoy {
 
     private IStrategyHandler strategyHandler;
@@ -30,11 +32,11 @@ public abstract class AbstractParkingBoy implements IParkingBoy {
     }
 
 
-    public static class gradStrategy implements IStrategyHandler {
+    public static class GradStrategy implements IStrategyHandler {
 
         private List<ParkingLot> parkingLots;
 
-        public gradStrategy(List<ParkingLot> parkingLots) {
+        public GradStrategy(List<ParkingLot> parkingLots) {
             this.parkingLots = parkingLots;
         }
 
@@ -48,7 +50,27 @@ public abstract class AbstractParkingBoy implements IParkingBoy {
         }
     }
 
-    public static class smartStrategy implements IStrategyHandler {
+    public static class SmartStrategy implements IStrategyHandler {
+
+        private List<ParkingLot> parkingLots;
+
+        public SmartStrategy(List<ParkingLot> parkingLots) {
+            this.parkingLots = parkingLots;
+        }
+
+        @Override
+        public ParkingLot chooseParkingLot() {
+            return parkingLots.stream().filter(lot -> lot.getCurrentParkNum() < lot.getSize()).max(comparing(ParkingLot::getRemainingParkNum)).get();
+        }
+    }
+
+    public static class ManagerStrategy implements IStrategyHandler {
+
+        private List<ParkingLot> parkingLots;
+
+        public ManagerStrategy(List<ParkingLot> parkingLots) {
+            this.parkingLots = parkingLots;
+        }
 
         @Override
         public ParkingLot chooseParkingLot() {
