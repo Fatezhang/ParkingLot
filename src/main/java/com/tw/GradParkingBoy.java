@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class ParkingBoy {
+public class GradParkingBoy {
 
-    List<ParkingLot> parkingLotList;
+    private List<ParkingLot> parkingLotList;
 
-    public ParkingBoy(List<ParkingLot> parkingLotList) {
+    public GradParkingBoy(List<ParkingLot> parkingLotList) {
         this.parkingLotList = parkingLotList;
     }
 

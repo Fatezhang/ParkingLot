@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class SmartParkingBoyTest {
+public class SmartGradParkingBoyTest {
 
     @Test
     public void givenASmartParkingBoyWithOneCarportParkingLotOneCarWhenParkingThenGetATicket() {

@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 /**
  * unit test for Parking boy
  */
-public class ParkingBoyTest {
+public class GradParkingBoyTest {
 
     @Test
     public void givenAParkingBoyOneCarportParkingLotOneCarWhenParkingThenGetATicket() {
@@ -21,9 +21,9 @@ public class ParkingBoyTest {
         ParkingLot parkingLot = new ParkingLot(1, id);
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        GradParkingBoy gradParkingBoy = new GradParkingBoy(parkingLots);
         Car car = new Car("陕 A88888");
-        Ticket ticket = parkingBoy.park(car);
+        Ticket ticket = gradParkingBoy.park(car);
         assertNotNull(ticket);
         assertEquals(ticket.getCarNumber(), car.getCarNumber());
         assertEquals(ticket.getParkingLotId(), id);
@@ -37,10 +37,10 @@ public class ParkingBoyTest {
         Car car = new Car(carNumber);
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        parkingBoy.park(car);
+        GradParkingBoy gradParkingBoy = new GradParkingBoy(parkingLots);
+        gradParkingBoy.park(car);
         Ticket ticket = new Ticket(carNumber, parkingLot.getId());
-        Car newCar = parkingBoy.pick(ticket);
+        Car newCar = gradParkingBoy.pick(ticket);
         assertEquals(ticket.getCarNumber(), newCar.getCarNumber());
     }
 
@@ -57,10 +57,10 @@ public class ParkingBoyTest {
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLotA);
         lotList.add(parkingLotB);
-        ParkingBoy parkingBoy = new ParkingBoy(lotList);
+        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
 
-        Ticket ticketA = parkingBoy.park(carA);
-        Ticket ticketB = parkingBoy.park(carB);
+        Ticket ticketA = gradParkingBoy.park(carA);
+        Ticket ticketB = gradParkingBoy.park(carB);
 
         assertEquals(ticketA.getCarNumber(), carANumber);
         assertEquals(ticketB.getCarNumber(), carBNumber);
@@ -81,12 +81,12 @@ public class ParkingBoyTest {
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLotA);
         lotList.add(parkingLotB);
-        ParkingBoy parkingBoy = new ParkingBoy(lotList);
-        Ticket ticketA = parkingBoy.park(carA);
-        Ticket ticketB = parkingBoy.park(carB);
-        parkingBoy.pick(ticketA);
+        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
+        Ticket ticketA = gradParkingBoy.park(carA);
+        Ticket ticketB = gradParkingBoy.park(carB);
+        gradParkingBoy.pick(ticketA);
 
-        Ticket ticketNewA = parkingBoy.park(carA);
+        Ticket ticketNewA = gradParkingBoy.park(carA);
         assertEquals(ticketNewA.getCarNumber(), carA.getCarNumber());
         assertEquals(ticketNewA.getParkingLotId(), parkingLotAId);
 
@@ -107,11 +107,11 @@ public class ParkingBoyTest {
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLotA);
         lotList.add(parkingLotB);
-        ParkingBoy parkingBoy = new ParkingBoy(lotList);
+        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
 
-        Ticket ticketA = parkingBoy.park(carA);
-        Ticket ticketB = parkingBoy.park(carB);
-        Ticket ticketC = parkingBoy.park(carC);
+        Ticket ticketA = gradParkingBoy.park(carA);
+        Ticket ticketB = gradParkingBoy.park(carB);
+        Ticket ticketC = gradParkingBoy.park(carC);
         assertEquals(ticketA.getParkingLotId(), parkingLotAId);
         assertEquals(ticketB.getParkingLotId(), parkingLotAId);
         assertEquals(ticketC.getParkingLotId(), parkingLotBId);
@@ -137,11 +137,11 @@ public class ParkingBoyTest {
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLotA);
         lotList.add(parkingLotB);
-        ParkingBoy parkingBoy = new ParkingBoy(lotList);
+        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
 
-        parkingBoy.park(carA);
-        parkingBoy.park(carB);
-        parkingBoy.park(carC);
+        gradParkingBoy.park(carA);
+        gradParkingBoy.park(carB);
+        gradParkingBoy.park(carC);
 
         expectedException.expectMessage("No carports to park");
 
@@ -155,11 +155,11 @@ public class ParkingBoyTest {
         Car car = new Car(carNumber);
         List<ParkingLot> lotList = new ArrayList<>();
         lotList.add(parkingLot);
-        ParkingBoy parkingBoy = new ParkingBoy(lotList);
-        Ticket ticket = parkingBoy.park(car);
+        GradParkingBoy gradParkingBoy = new GradParkingBoy(lotList);
+        Ticket ticket = gradParkingBoy.park(car);
 
-        parkingBoy.pick(ticket);
-        parkingBoy.pick(ticket);
+        gradParkingBoy.pick(ticket);
+        gradParkingBoy.pick(ticket);
 
         expectedException.expectMessage("Invalid ticket");
 
