@@ -16,7 +16,7 @@ public abstract class AbstractParkingBoy implements IParkingBoy {
 
     @Override
     public Car pick(Ticket ticket) {
-        ParkingLot parkingLot = this.getParkingLots().stream().filter(lot -> lot.getId() == ticket.getParkingLotId()).collect(Collectors.<ParkingLot>toList()).get(0);
+        ParkingLot parkingLot = this.getParkingLots().stream().filter(lot -> lot.getId() == ticket.getParkingLotId()).collect(Collectors.toList()).get(0);
         return parkingLot.getCar(ticket);
     }
 
@@ -25,9 +25,9 @@ public abstract class AbstractParkingBoy implements IParkingBoy {
     /**
      * 初始化选取停车场的策略
      *
-     * @param strategyHandler
+     * @param strategyHandler 停车策略
      */
-    protected void initStrategy(IStrategyHandler strategyHandler) {
+    void initStrategy(IStrategyHandler strategyHandler) {
         this.strategyHandler = strategyHandler;
     }
 
@@ -65,27 +65,22 @@ public abstract class AbstractParkingBoy implements IParkingBoy {
     }
 
     /**
-     * 只有停车经理去实现这个方法 没有实现的话抛出异常
-     *
-     * @return 返回停车经理手下的所有停车小弟
-     */
-    protected List<IParkingBoy> getMyParkingBoys() {
-        throw new RuntimeException("Illegal operation");
-    }
-
-    /**
-     * 泊车经理的泊车策略 需要获取到所有手下的停车小弟
+     * 泊车经理的泊车策略 需要拿到所有手下的停车小弟
      */
     public static class ManagerStrategy implements IStrategyHandler {
 
         private List<ParkingLot> parkingLots;
 
-        public ManagerStrategy(List<ParkingLot> parkingLots) {
+        private List<IParkingBoy> parkingBoys;
+
+        public ManagerStrategy(List<ParkingLot> parkingLots, List<IParkingBoy> parkingBoys) {
             this.parkingLots = parkingLots;
+            this.parkingBoys = parkingBoys;
         }
 
         @Override
         public ParkingLot chooseParkingLot() {
+
             return null;
         }
 
